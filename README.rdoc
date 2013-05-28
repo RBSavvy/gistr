@@ -1,3 +1,0 @@
-== Gistr
-
-A gist randomizer for the advancement of coder kind.
