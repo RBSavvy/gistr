@@ -8,9 +8,11 @@ development:
 test:
   adapter: postgresql
   database: gistr-test
-  user: postgres
   pool: 5
   timeout: 5000
+  <% if ENV['TRAVIS'] %>
+  user: postgres
+  <% end %>
 
 production:
   adapter: postgresql
