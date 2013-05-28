@@ -1,0 +1,10 @@
+language: ruby
+rvm:
+  - 1.9.3
+
+services:
+  - redis-server
+  - postgresql
+
+before_script:
+  - psql -c 'create database gistr_test;' -U postgres
