@@ -9,10 +9,9 @@ before_script:
 - psql -c 'create database gistr_test;' -U postgres
 after_success:
 - bash -x -e bin/travis-deploy.sh
-
 env:
   global:
-    secure: |-
-      RXix+2UifA9EIyNIMGtlOWDle/5DC+4/rwVZQebTi6BkxqMmAebKhqW/faWa
-      SjbaAG3UHQEqDKdFt4+N2chc4vvBjC07EE1+q2KdFq2ounqWGHzHZa3aO0xU
-      UJPaoP1IatGtFskYPu2h0hR+fByQDXmmNjIYhhf1+ugjdOsnSHU=
+  - secure: |-
+      OttEShBYWrpZ4Bv6MF5teSAld5OdXMmZ17XHhbCgbWXvYfFM5ciXwDARmuaN
+      NiMIk0Bxt64iGSeUk+VerU1hZejL06LZtdeNN9tGLVpqOqEbwaFHWy6K3QpJ
+      mU4oGncZ4YPbVXSXya04KGWLx0AM8KRB3mX9EvB0hMvin1NRiSE=
