@@ -1,10 +1,18 @@
+---
 language: ruby
 rvm:
-  - 2.0.0
-
+- 2.0.0
 services:
-  - redis-server
-  - postgresql
-
+- redis-server
+- postgresql
 before_script:
-  - psql -c 'create database gistr_test;' -U postgres
+- psql -c 'create database gistr_test;' -U postgres
+after_success:
+- ./bin/travis-deploy.sh
+
+env:
+  global:
+    secure: |-
+      RXix+2UifA9EIyNIMGtlOWDle/5DC+4/rwVZQebTi6BkxqMmAebKhqW/faWa
+      SjbaAG3UHQEqDKdFt4+N2chc4vvBjC07EE1+q2KdFq2ounqWGHzHZa3aO0xU
+      UJPaoP1IatGtFskYPu2h0hR+fByQDXmmNjIYhhf1+ugjdOsnSHU=
