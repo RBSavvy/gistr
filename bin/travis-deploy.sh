@@ -1,4 +1,4 @@
-#!/bin/bash -x -e
+#!/bin/bash -e
 
 if [[ "$TRAVIS_PULL_REQUEST" == "true" ]]; then
   echo "This is a pull request. No deployment will be done.";
@@ -9,13 +9,6 @@ if [[ "$TRAVIS_BRANCH" != "master" ]] && [[ "$TRAVIS_BRANCH" != "staging" ]]; th
   echo "This is not a deployable branch.";
   exit 0;
 fi
-
-if [[ "x$HEROKU_API_KEY" == "x" ]]; then
-  echo "Missing Heroku API Key.";
-  exit 1;
-fi
-
-false
 
 wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
 heroku plugins:install https://github.com/ddollar/heroku-anvil
@@ -29,3 +22,5 @@ fi
 # if [[ "$TRAVIS_BRANCH" == "staging" ]]; then
 #   heroku build -r gistr-staging -b https://github.com/heroku/heroku-buildpack-ruby.git
 # fi
+
+exit 1
