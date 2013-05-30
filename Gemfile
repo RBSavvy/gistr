@@ -10,6 +10,9 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder'
 gem 'rspec'
+gem 'redis'
+
+gem 'conventional_config', github: 'phil-monroe/conventional_config'
 
 group :doc do
   gem 'sdoc', require: false

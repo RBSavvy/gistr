@@ -1,0 +1,1 @@
+REDIS = Redis.new Conf::Redis.config
