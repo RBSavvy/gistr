@@ -11,6 +11,7 @@ gem 'turbolinks'
 gem 'jbuilder'
 gem 'rspec'
 gem 'redis'
+gem 'github_api'
 
 gem 'conventional_config', github: 'phil-monroe/conventional_config'
 

@@ -1,0 +1,10 @@
+development: &local
+  client_id:     <%= ENV['GISTR_GITHUB_CLIENT_ID']     || '5eaee766739256da4d01'                     %>
+  client_secret: <%= ENV['GISTR_GITHUB_CLIENT_SECRET'] || 'f46357450ba4661249a307ddfffb17703ee7462b' %>
+
+test:
+  <<: *local
+
+production:
+  client_id:     <%= ENV['GISTR_GITHUB_CLIENT_ID']     %>
+  client_secret: <%= ENV['GISTR_GITHUB_CLIENT_SECRET'] %>
