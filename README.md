@@ -2,3 +2,5 @@
 
 
 A gist randomizer for the advancement of coder kind.
+
+Gives the ability to randomly choose Gists to read for specific programming languages.
