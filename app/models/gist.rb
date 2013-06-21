@@ -13,7 +13,7 @@ class Gist
 
   def self.latest_timestamp= time
     raise ArgumentError, "Time must respond to utc" unless time.respond_to? :utc
-    if latest_timestamp.nil? || time > latest_timestamp
+    if latest_timestamp().nil? || time > latest_timestamp()
       REDIS.set redis_key(:latest_timestamp), time.utc.to_s
     end
   end
@@ -39,7 +39,8 @@ class Gist
     end
 
     # update latest timestamp
-    latest_timestamp = Time.parse(gist.updated_at)
+    self.latest_timestamp = Time.parse(gist.updated_at)
+    gist
   end
 
   def self.find id
