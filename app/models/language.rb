@@ -6,7 +6,7 @@ class Language
 
   def self.all
     keys = REDIS.keys 'languages:language:*'
-    keys.map {|k| self.new(key) }
+    keys.map {|key| self.new(key) }
   end
 
 
