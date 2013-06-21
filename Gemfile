@@ -15,6 +15,17 @@ gem 'github_api'
 
 gem 'conventional_config', github: 'phil-monroe/conventional_config'
 
+
+
+group :development do
+  gem 'pry'
+end
+
+group :test do
+  gem 'simplecov',      require: false
+  gem 'simplecov-rcov', require: false
+end
+
 group :doc do
   gem 'sdoc', require: false
 end
