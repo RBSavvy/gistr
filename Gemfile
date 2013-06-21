@@ -29,3 +29,8 @@ end
 group :doc do
   gem 'sdoc', require: false
 end
+
+group :test do
+  gem 'coveralls', require: false
+  gem 'simplecov', require: false
+end

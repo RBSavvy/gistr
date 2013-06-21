@@ -5,10 +5,16 @@ rvm:
 services:
 - redis-server
 - postgresql
+
+script: 
+- bundle exec rake --trace
+
 before_script:
 - psql -c 'create database gistr_test;' -U postgres
+
 after_success:
 - bash -x -e bin/travis-deploy.sh
+
 env:
   global:
   - secure: |-
