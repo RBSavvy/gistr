@@ -32,8 +32,10 @@ class Gist
 
 
     # Add gist to language sets
-    hash[:file].try(:each) do |filename, data|
-      Language.find(data[:language]).add gist
+    if hash[:files].present?
+      hash[:files].each do |filename, data|
+        Language.find(data[:language]).add gist if data[:language].present?
+      end
     end
 
     # update latest timestamp
