@@ -32,7 +32,7 @@ class Gist
 
 
     # Add gist to language sets
-    hash[:file].each do |filename, data|
+    hash[:file].try(:each) do |filename, data|
       Language.find(data[:language]).add gist
     end
 
