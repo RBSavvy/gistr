@@ -15,3 +15,12 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# redis
+*.rdb
+
+# coverage reports
+/coverage/
+
+#madeye
+.madeyeignore
