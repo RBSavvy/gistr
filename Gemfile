@@ -3,15 +3,15 @@ ruby '2.0.0'
 
 gem 'rails', '4.0.0'
 gem 'pg'
-gem 'sass-rails', '~> 4.0.0.rc1'
+gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
-gem 'jbuilder'
+gem 'jbuilder', '~> 1.2'
 gem 'rspec'
 gem 'redis'
-gem 'github_api', github: 'RBSavvy/github'
+gem 'github_api'
 
 gem 'conventional_config', github: 'phil-monroe/conventional_config'
 
