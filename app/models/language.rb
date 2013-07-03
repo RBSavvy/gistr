@@ -23,6 +23,10 @@ class Language
     true
   end
 
+  def self.build name
+    Language.new redis_key(name)
+  end
+
   def initialize(key)
     raise ArgumentError, "Language key must match languages:language:*" unless key.match(/^languages\:language\:\w+.*$/)
     @key = key
