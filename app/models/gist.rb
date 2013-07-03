@@ -16,13 +16,14 @@ class Gist
 
   def self.create_from_github hash
     # Remove from all language sets
-    Language.all.map do |lang|
-      lang.remove hash[:id]
-    end
+    Language.remove_gist_id hash[:id]
 
     # Add gist to language sets
     Hash(hash[:files]).each do |filename, data|
-      Language.find(data[:language]).add hash[:id] if data[:language].present?
+      if data[:language].present?
+        language = Language.find(data[:language]) rescue Language.build(data[:language])
+        language.add_gist_id hash[:id]
+      end
     end
 
     # update latest timestamp
