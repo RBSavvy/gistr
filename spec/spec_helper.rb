@@ -14,4 +14,12 @@ end
 
 
 require File.expand_path('../../config/environment', __FILE__)
-require 'rspec/autorun'
+
+RSpec.configure do |config|
+  config.before(:each) do
+    REDIS.flushdb
+    Dir[Rails.root.join('spec/fixtures/**/*.rb')].each { |f| load f }
+  end
+
+
+end
