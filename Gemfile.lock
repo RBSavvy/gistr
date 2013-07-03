@@ -1,4 +1,17 @@
 GIT
+  remote: git://github.com/RBSavvy/github.git
+  revision: 5510dfd4e95007b188efb69243d6af723bafea3c
+  branch: hotfix/client_inherits_tokens
+  specs:
+    github_api (0.10.2)
+      addressable
+      faraday (~> 0.8.7)
+      hashie (>= 1.2)
+      multi_json (~> 1.4)
+      nokogiri (~> 1.6.0)
+      oauth2
+
+GIT
   remote: git://github.com/phil-monroe/conventional_config.git
   revision: 9be1f9e1cfb52712bd06e05cba764b9fb252981e
   specs:
@@ -58,13 +71,6 @@ GEM
       multi_json (~> 1.0)
     faraday (0.8.7)
       multipart-post (~> 1.1)
-    github_api (0.10.2)
-      addressable
-      faraday (~> 0.8.7)
-      hashie (>= 1.2)
-      multi_json (~> 1.4)
-      nokogiri (~> 1.6.0)
-      oauth2
     hashie (2.0.5)
     hike (1.2.3)
     httpauth (0.2.0)
@@ -178,7 +184,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   conventional_config!
   coveralls
-  github_api
+  github_api!
   jbuilder (~> 1.2)
   jquery-rails
   pg

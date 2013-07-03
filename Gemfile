@@ -11,7 +11,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'rspec'
 gem 'redis'
-gem 'github_api'
+gem 'github_api', github: 'RBSavvy/github', branch: 'hotfix/client_inherits_tokens'
 
 gem 'conventional_config', github: 'phil-monroe/conventional_config'
 
