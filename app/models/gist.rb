@@ -1,9 +1,5 @@
 class Gist
   # gists:latest_timestamp      => latest_timestamp
-  # gists:language:#{lang_name} => Set of gist ids
-  # gists:gist:#{id}            => hash of values ()
-
-  ATTRIBUTES = [:id, :updated_at, :username, :gravatar_url, :html_url]
 
 
   def self.latest_timestamp
@@ -19,51 +15,19 @@ class Gist
   end
 
   def self.create_from_github hash
-    # persist values
-    gist              = Gist.find(hash[:id])
-    gist.id           = hash[:id]
-    gist.updated_at   = hash[:updated_at]
-    gist.username     = hash[:owner][:login]        if hash[:owner].present?
-    gist.gravatar_url = hash[:owner][:gravatar_url] if hash[:owner].present?
-    gist.html_url     = hash[:html_url]
-
-
     # Remove from all language sets
-
+    Language.all.map do |lang|
+      lang.remove hash[:id]
+    end
 
     # Add gist to language sets
-    if hash[:files].present?
-      hash[:files].each do |filename, data|
-        Language.find(data[:language]).add gist if data[:language].present?
-      end
+    Hash(hash[:files]).each do |filename, data|
+      Language.find(data[:language]).add hash[:id] if data[:language].present?
     end
 
     # update latest timestamp
-    self.latest_timestamp = Time.parse(gist.updated_at)
-    gist
-  end
-
-  def self.find id
-    self.new redis_key("gist:#{id}")
-  end
-
-  def initialize key
-    @key = key
-  end
-
-  def attributes
-    @attributes ||= Hash[ATTRIBUTES.zip(REDIS.hmget(@key, ATTRIBUTES))]
-  end
-
-  ATTRIBUTES.each do |var|
-    define_method(var) do
-      attributes[var]
-    end
-
-    define_method("#{var}=") do |val|
-      REDIS.hset(@key, var, val)
-      attributes[var] = val
-    end
+    self.latest_timestamp = Time.parse(hash[:updated_at])
+    true
   end
 
 
