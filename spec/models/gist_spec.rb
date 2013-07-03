@@ -66,6 +66,10 @@ describe Gist do
           'run-pocc.bat' => {
             filename: "run-pocc.bat",
             language: "Batchfile"
+          },
+          'run-pocc.new' => {
+            filename: "run-pocc.bat",
+            language: "NEW_LANG"
           }
         }
       }
@@ -74,28 +78,35 @@ describe Gist do
     let(:language) { double(:language) }
 
     before do
-      Language.stub(:find) { language }
+      Language.stub(:find) do |name|
+        if name == 'NEW_LANG'
+          raise 'new language'
+        else
+          language
+        end
+      end
       Language.stub(:all)  { [language, language] }
+      Language.stub(:build) { language }
     end
 
 
     it "should add the gist's IDs to languages" do
-      language.should_receive(:add).with(gist_data[:id])
-      language.should_receive(:remove).any_number_of_times
+      language.should_receive(:add_gist_id).with(gist_data[:id]).exactly(2).times
+      Language.should_receive(:remove_gist_id).any_number_of_times
 
       gist
     end
 
     it 'should remap gists languages when they change' do
-      language.should_receive(:remove).with(gist_data[:id]).exactly(2).times
-      language.should_receive(:add).any_number_of_times
+      Language.should_receive(:remove_gist_id).with(gist_data[:id]).exactly(1).times
+      language.should_receive(:add_gist_id).any_number_of_times
 
       gist
     end
 
     it 'should update the latest gist timestamp' do
-      language.should_receive(:remove).any_number_of_times
-      language.should_receive(:add).any_number_of_times
+      Language.should_receive(:remove_gist_id).any_number_of_times
+      language.should_receive(:add_gist_id).any_number_of_times
       Gist.should_receive(:latest_timestamp=).with(Time.parse(gist_data[:updated_at]))
 
       gist

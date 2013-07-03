@@ -45,6 +45,20 @@ describe Language do
   end
 
 
+  describe '::build' do
+    let(:language) { Language.build 'Scala' }
+    it 'creates an empty language' do
+      expect{Language.find('Scala')}.to raise_error Language::NoLanguage
+      expect(language).to be_kind_of Language
+      expect{Language.find('Scala')}.to raise_error Language::NoLanguage
+      language.add_gist_id 2
+      expect{Language.find('Scala')}.to_not raise_error Language::NoLanguage
+    end
+
+
+  end
+
+
   describe '#gist_ids' do
     it 'returns an array of gist_ids ' do
       expect(language.gist_ids).to eq(LANGUAGE_FIXTURES['Ruby'])

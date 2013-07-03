@@ -19,6 +19,7 @@ class Scraper
     gists
   end
 
+  private
 
   def sleep_if_needed headers
     @backoff ||= 1
@@ -31,7 +32,7 @@ class Scraper
         sleep @backoff
       else
         if @backoff != 1
-          @backoff /=2
+          @backoff /= 2
           sleep @backoff
         end
         break
@@ -54,16 +55,14 @@ class Scraper
   end
 
   def next_page(gists)
-    begin
-      n ||= 0
-      page = gists.send(:page_iterator).next_page
-      puts "Next page: #{page+n}"
-      gists.page(page+n)
-    rescue Github::Error::InternalServerError => e
-      puts e.inspect
-      n +=1
-      retry
-    end
+    n ||= 0
+    page = gists.send(:page_iterator).next_page
+    puts "Next page: #{page+n}"
+    gists.page(page+n)
+  rescue Github::Error::InternalServerError => e
+    puts e.inspect
+    n += 1
+    retry
   end
 
 end
