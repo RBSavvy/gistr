@@ -24,6 +24,8 @@ end
 group :test do
   gem 'simplecov',      require: false
   gem 'simplecov-rcov', require: false
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :doc do
