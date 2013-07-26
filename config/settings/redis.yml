@@ -1,14 +1,17 @@
 development:
-  host: <%= ENV['GISTR_REDIS_HOST'] || 'localhost' %>
-  port: <%= ENV['GISTR_REDIS_PORT'] || '6379'      %>
-  db:   <%= ENV['GISTR_REDIS_DB']   || '0'         %>
+  host:     <%= ENV['GISTR_REDIS_HOST'] || 'localhost' %>
+  port:     <%= ENV['GISTR_REDIS_PORT'] || '6379'      %>
+  db:       <%= ENV['GISTR_REDIS_DB']   || '0'         %>
+  password: <%= ENV['GISTR_REDIS_PASSWORD']   %>
 
 test:
-  host: <%= ENV['GISTR_REDIS_HOST'] || 'localhost' %>
-  port: <%= ENV['GISTR_REDIS_PORT'] || '6379'      %>
-  db:   <%= ENV['GISTR_REDIS_DB']   || '1'         %>
+  host:     <%= ENV['GISTR_REDIS_HOST'] || 'localhost' %>
+  port:     <%= ENV['GISTR_REDIS_PORT'] || '6379'      %>
+  db:       <%= ENV['GISTR_REDIS_DB']   || '1'         %>
+  password: <%= ENV['GISTR_REDIS_PASSWORD']   %>
 
 production:
-  host: <%= ENV['GISTR_REDIS_HOST'] %>
-  port: <%= ENV['GISTR_REDIS_PORT'] %>
-  db:   <%= ENV['GISTR_REDIS_DB']   %>
+  host:     <%= ENV['GISTR_REDIS_HOST'] %>
+  port:     <%= ENV['GISTR_REDIS_PORT'] %>
+  db:       <%= ENV['GISTR_REDIS_DB']   %>
+  password: <%= ENV['GISTR_REDIS_PASSWORD']   %>
