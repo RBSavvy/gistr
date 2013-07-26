@@ -17,11 +17,12 @@ class Language
   end
 
   def self.remove_gist_id(id)
-    self.all.each { |lang|
-      REDIS.pipelined do
+    langs = self.all
+    REDIS.pipelined do
+      langs.each do |lang|
         lang.remove_gist_id(id)
       end
-    }
+    end
     true
   end
 

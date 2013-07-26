@@ -19,10 +19,12 @@ class Gist
     Language.remove_gist_id hash[:id]
 
     # Add gist to language sets
-    Hash(hash[:files]).each do |filename, data|
-      if data[:language].present?
-        language = Language.find(data[:language]) rescue Language.build(data[:language])
-        language.add_gist_id hash[:id]
+    REDIS.pipelined do
+      Hash(hash[:files]).each do |filename, data|
+        if data[:language].present?
+          language = Language.build(data[:language])
+          language.add_gist_id hash[:id]
+        end
       end
     end
 
