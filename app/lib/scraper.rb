@@ -45,7 +45,7 @@ class Scraper
   def next_page(gists)
     n ||= 0
     page = gists.send(:page_iterator).next_page
-    logger.debug "Next page: #{page+n}"
+    logger.info "Next page: #{page+n}"
     gists.page(page+n)
   rescue Github::Error::InternalServerError => e
     logger.warn e.inspect
