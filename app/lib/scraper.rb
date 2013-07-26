@@ -11,7 +11,7 @@ class Scraper
   def scrape
     gists = GITHUB.gists.list(:public, self.opts)
     process(gists)
-    while gists.size != 0
+    while gists.size != 0 && gists.send(:page_iterator).next_page != -1
       sleep_if_needed gists.headers
       gists = next_page(gists)
       process(gists)
