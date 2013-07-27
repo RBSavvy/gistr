@@ -16,6 +16,7 @@ gem 'github_api', github: 'RBSavvy/github', branch: 'hotfix/client_inherits_toke
 gem 'conventional_config', github: 'phil-monroe/conventional_config'
 
 gem 'rails_12factor'
+gem 'haml'
 
 
 group :development do
