@@ -1,0 +1,14 @@
+%h2
+  = "#{gist.id} - #{gist.owner.try :login}"
+%div
+  = link_to "View on Github", gist.html_url
+%div
+  = gist.description
+%div
+  %ul
+    - gist.files.values.map(&:language).compact.uniq.each do |lang|
+      %li
+        = lang
+
+
+= "<script src='https://gist.github.com/#{gist.owner.login}/#{gist.id}.js'></script>".html_safe
