@@ -1,6 +1,6 @@
 
-desc 'Pulls gists from GitHub'
-task(:pull_from_github, :since) do |t, vars|
+desc 'Pulls latest gists from GitHub'
+task(:latest_from_github, :since) do |t, vars|
   if vars[:since] == 'scrape'
     timestamp = nil
   else
@@ -9,4 +9,11 @@ task(:pull_from_github, :since) do |t, vars|
   Scraper.new(since: timestamp).scrape
 end
 
-task :pull_from_github => :environment
+task :latest_from_github => :environment
+
+desc 'Pulls latest gists from GitHub'
+task(:scrape_from_github, :page) do |t, vars|
+  Scraper.new(page: vars[:page].try(:to_i) ).scrape
+end
+
+task :scrape_from_github => :environment
