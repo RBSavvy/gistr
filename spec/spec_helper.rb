@@ -2,6 +2,7 @@ ENV["RAILS_ENV"] ||= "test"
 
 require 'simplecov'
 require 'coveralls'
+require 'rspec/rails'
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
   SimpleCov::Formatter::HTMLFormatter,

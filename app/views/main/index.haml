@@ -1,0 +1,6 @@
+%ol
+- @languages.each do |lang|
+  %li
+    = link_to lang.name, gist_with_lang_path(language: lang.name)
+    \-
+    = lang.gist_count

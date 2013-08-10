@@ -5,6 +5,6 @@
   = javascript_include_tag "application", "data-turbolinks-track" => true
   = csrf_meta_tags
 
-%body
-  %h1 Gister
+%body{ 'data-no-turbolink' => '' }
+  %h1= link_to 'Gister', root_path
   = yield
