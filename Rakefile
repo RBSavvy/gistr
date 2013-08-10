@@ -1,9 +1,11 @@
 require File.expand_path('../config/application', __FILE__)
-require 'rspec/core/rake_task'
 
 Gistr::Application.load_tasks
 
-RSpec::Core::RakeTask.new(:spec) do |t|
-  t.rspec_opts = '--color'
+if Rails.env.development? || Rails.env.test?
+  require 'rspec/core/rake_task'
+  RSpec::Core::RakeTask.new(:spec) do |t|
+    t.rspec_opts = '--color'
+  end
+  task :default => :spec
 end
-task :default => :spec
