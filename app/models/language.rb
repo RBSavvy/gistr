@@ -1,6 +1,6 @@
 class Language
   NAMESPACE = 'languages:language'
-  class NoLanguage < StandardError; end
+  class NoLanguage < Errors::RecordNotFound; end
 
   attr_reader :key
 
