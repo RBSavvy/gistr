@@ -37,7 +37,7 @@ group :test do
   gem 'coveralls', require: false
   gem 'simplecov', require: false
   gem 'rspec'
-  gem 'rspec-rails'
+  gem 'rspec-rails', require: false
   gem 'pry'
 
 end

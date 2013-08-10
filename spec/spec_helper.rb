@@ -2,7 +2,7 @@ ENV["RAILS_ENV"] ||= "test"
 
 require 'simplecov'
 require 'coveralls'
-require 'rspec/rails'
+
 
 SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
   SimpleCov::Formatter::HTMLFormatter,
@@ -15,6 +15,7 @@ end
 
 
 require File.expand_path('../../config/environment', __FILE__)
+require 'rspec/rails'
 
 RSpec.configure do |config|
   config.before(:each) do
